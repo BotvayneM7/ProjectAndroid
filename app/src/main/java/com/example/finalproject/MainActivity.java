@@ -1,48 +1,44 @@
 package com.example.finalproject;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    @SuppressLint("MissingInflatedId")
+    // Declare buttons for Admin and Employee login
+    private Button btnAdmin, btnEmployee;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main); // Set the layout for the main screen
 
-        // Enable edge-to-edge mode
-        EdgeToEdge.enable(this);
+        // Initialize the buttons by finding them by their IDs
+        btnAdmin = findViewById(R.id.btnAdmin);
+        btnEmployee = findViewById(R.id.btnEmployee);
 
-        // Set the main layout
-        setContentView(R.layout.activity_main);
-
-        // Apply window insets to adjust padding for system bars
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        // Set an OnClickListener for the Admin button
+        btnAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to Admin Login Activity when the Admin button is clicked
+                Intent intent = new Intent(MainActivity.this, AdminLoginActivity.class);
+                startActivity(intent);
+            }
         });
 
-        // Find buttons and set up click listeners
-        Button btnAdmin = findViewById(R.id.btnAdmin);
-        Button btnEmployee = findViewById(R.id.btnEmployee);
-
-        btnAdmin.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, AdminLoginActivity.class);
-            startActivity(intent);
-        });
-
-        btnEmployee.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, EmployeeLoginActivity.class);
-            startActivity(intent);
+        // Set an OnClickListener for the Employee button
+        btnEmployee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to Employee Login Activity when the Employee button is clicked
+                Intent intent = new Intent(MainActivity.this, EmployeeLoginActivity.class);
+                startActivity(intent);
+            }
         });
     }
 }
