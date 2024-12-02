@@ -1,0 +1,44 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/expenseTypeInput"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Enter Expense Type"
+        android:padding="12dp"
+        android:background="?attr/editTextBackground" />
+
+    <EditText
+        android:id="@+id/expenseAmountInput"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Enter Expense Amount"
+        android:inputType="numberDecimal"
+        android:padding="12dp"
+        android:background="?attr/editTextBackground"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/submitExpenseButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Submit Expense"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/goBackToDashboardButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Back to Dashboard"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        android:layout_gravity="center" />
+    
+</LinearLayout>

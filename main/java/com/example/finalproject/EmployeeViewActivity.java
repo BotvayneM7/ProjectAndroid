@@ -1,5 +1,7 @@
 package com.example.finalproject;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -78,12 +80,17 @@ public class EmployeeViewActivity extends AppCompatActivity {
     }
 
     private void openSubmitExpenseScreen() {
-        Toast.makeText(this, "Opening Submit Expense Screen...", Toast.LENGTH_SHORT).show();
+        // Navigate to SubmitExpenseActivity
+        Intent intent = new Intent(EmployeeViewActivity.this, SubmitExpenseActivity.class);
+        startActivity(intent);
     }
 
     private void openViewSummaryScreen() {
-        Toast.makeText(this, "Opening View Summary Screen...", Toast.LENGTH_SHORT).show();
+        // Navigate to ExpenseSummaryActivity
+        Intent intent = new Intent(EmployeeViewActivity.this, ExpenseSummaryActivity.class);
+        startActivity(intent);
     }
+
 
     private void openNotifications() {
         Toast.makeText(this, "Opening Notifications...", Toast.LENGTH_SHORT).show();
@@ -95,6 +102,16 @@ public class EmployeeViewActivity extends AppCompatActivity {
 
     private void loadRecentActivity() {
         ArrayList<String> recentActivities = new ArrayList<>();
+
+        // Retrieve saved expense data from SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("ExpenseData", MODE_PRIVATE);
+        String expenseType = sharedPreferences.getString("expenseType", "No Expense Found");
+        String expenseAmount = sharedPreferences.getString("expenseAmount", "0");
+
+        // Add the retrieved expense to the recent activities list
+        recentActivities.add("Expense Type: " + expenseType + " - Amount: $" + expenseAmount);
+
+        // You can add more items to the list as needed for more expenses
         recentActivities.add("Travel Expense - $50 - Approved");
         recentActivities.add("Meal Expense - $30 - Pending");
         recentActivities.add("Office Supplies - $120 - Approved");

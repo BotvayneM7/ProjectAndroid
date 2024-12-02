@@ -47,6 +47,14 @@
             android:name=".AdminDashboardActivity"
             android:exported="true" />
 
+        <activity
+            android:name=".SubmitExpenseActivity"
+            android:label="Submit Expense" />
+        <activity
+            android:name=".ExpenseSummaryActivity"
+            android:label="Expense Summary" />
+
+
     </application>
 
 </manifest>
